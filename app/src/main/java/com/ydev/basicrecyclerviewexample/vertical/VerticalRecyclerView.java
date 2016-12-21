@@ -48,7 +48,7 @@ public class VerticalRecyclerView extends AppCompatActivity {
             data.add(new VerticalData(R.mipmap.ic_launcher, i+"번째 데이터"));
             i++;
         }
-
+ 
         // set Data
         mAdapter.setData(data);
 
