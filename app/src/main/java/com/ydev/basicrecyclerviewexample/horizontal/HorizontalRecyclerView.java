@@ -1,4 +1,4 @@
-package com.ydev.basicrecyclerviewexample.vertical;
+package com.ydev.basicrecyclerviewexample.horizontal;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,10 +14,10 @@ import com.ydev.basicrecyclerviewexample.R;
 
 import java.util.ArrayList;
 
-public class VerticalRecyclerView extends AppCompatActivity {
+public class HorizontalRecyclerView extends AppCompatActivity {
 
-    private RecyclerView mVerticalView;
-    private VerticalAdapter mAdapter;
+    private RecyclerView mHorizontalView;
+    private HorizontalAdapter mAdapter;
     private LinearLayoutManager mLayoutManager;
 
     private int MAX_ITEM_COUNT = 50;
@@ -28,24 +28,24 @@ public class VerticalRecyclerView extends AppCompatActivity {
         setContentView(R.layout.recycler_view);
 
         // RecyclerView binding
-        mVerticalView = (RecyclerView) findViewById(R.id.recyclerView);
+        mHorizontalView = (RecyclerView) findViewById(R.id.recyclerView);
 
         // init LayoutManager
         mLayoutManager = new LinearLayoutManager(this);
-        mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL); // 기본값이 VERTICAL
+        mLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL); // 기본값이 Horizontal
 
         // setLayoutManager
-        mVerticalView.setLayoutManager(mLayoutManager);
+        mHorizontalView.setLayoutManager(mLayoutManager);
 
         // init Adapter
-        mAdapter = new VerticalAdapter();
+        mAdapter = new HorizontalAdapter();
 
         // init Data
-        ArrayList<VerticalData> data = new ArrayList<>();
+        ArrayList<HorizontalData> data = new ArrayList<>();
 
         int i = 0;
         while (i < MAX_ITEM_COUNT) {
-            data.add(new VerticalData(R.mipmap.ic_launcher, i+"번째 데이터"));
+            data.add(new HorizontalData(R.mipmap.ic_launcher, i+"번째 데이터"));
             i++;
         }
  
@@ -53,35 +53,35 @@ public class VerticalRecyclerView extends AppCompatActivity {
         mAdapter.setData(data);
 
         // set Adapter
-        mVerticalView.setAdapter(mAdapter);
+        mHorizontalView.setAdapter(mAdapter);
 
     }
 
 }
 
-class VerticalAdapter extends RecyclerView.Adapter<VerticalViewHolder> {
+class HorizontalAdapter extends RecyclerView.Adapter<HorizontalViewHolder> {
 
-    private ArrayList<VerticalData> verticalDatas;
+    private ArrayList<HorizontalData> HorizontalDatas;
 
-    public void setData(ArrayList<VerticalData> list){
-        verticalDatas = list;
+    public void setData(ArrayList<HorizontalData> list){
+        HorizontalDatas = list;
     }
 
     @Override
-    public VerticalViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public HorizontalViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         // 사용할 아이템의 뷰를 생성해준다.
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.vertical_recycler_items, parent, false);
+                .inflate(R.layout.horizon_recycler_items, parent, false);
 
-        VerticalViewHolder holder = new VerticalViewHolder(view);
+        HorizontalViewHolder holder = new HorizontalViewHolder(view);
 
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(VerticalViewHolder holder, int position) {
-        VerticalData data = verticalDatas.get(position);
+    public void onBindViewHolder(HorizontalViewHolder holder, int position) {
+        HorizontalData data = HorizontalDatas.get(position);
 
         holder.description.setText(data.getText());
         holder.icon.setImageResource(data.getImg());
@@ -90,30 +90,30 @@ class VerticalAdapter extends RecyclerView.Adapter<VerticalViewHolder> {
 
     @Override
     public int getItemCount() {
-        return verticalDatas.size();
+        return HorizontalDatas.size();
     }
 }
 
-class VerticalViewHolder extends RecyclerView.ViewHolder {
+class HorizontalViewHolder extends RecyclerView.ViewHolder {
 
     public ImageView icon;
     public TextView description;
 
-    public VerticalViewHolder(View itemView) {
+    public HorizontalViewHolder(View itemView) {
         super(itemView);
 
-        icon = (ImageView) itemView.findViewById(R.id.vertical_icon);
-        description = (TextView) itemView.findViewById(R.id.vertical_description);
+        icon = (ImageView) itemView.findViewById(R.id.horizon_icon);
+        description = (TextView) itemView.findViewById(R.id.horizon_description);
 
     }
 }
 
-class VerticalData {
+class HorizontalData {
 
     private int img;
     private String text;
 
-    public VerticalData(int img, String text){
+    public HorizontalData(int img, String text){
         this.img = img;
         this.text = text;
     }

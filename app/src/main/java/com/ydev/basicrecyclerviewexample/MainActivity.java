@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.ydev.basicrecyclerviewexample.horizontal.HorizontalRecyclerView;
 import com.ydev.basicrecyclerviewexample.vertical.VerticalRecyclerView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -33,10 +34,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_horizontal:
+                Intent i1 = new Intent(MainActivity.this, HorizontalRecyclerView.class);
+                startActivity(i1);
                 break;
             case R.id.btn_vertical:
-                Intent i = new Intent(MainActivity.this, VerticalRecyclerView.class);
-                startActivity(i);
+                Intent i2 = new Intent(MainActivity.this, VerticalRecyclerView.class);
+                startActivity(i2);
                 break;
             case R.id.btn_grid:
 
