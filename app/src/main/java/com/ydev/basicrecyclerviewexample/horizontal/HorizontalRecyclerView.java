@@ -22,6 +22,8 @@ public class HorizontalRecyclerView extends AppCompatActivity {
 
     private int MAX_ITEM_COUNT = 50;
 
+    // TestCode for Github
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
