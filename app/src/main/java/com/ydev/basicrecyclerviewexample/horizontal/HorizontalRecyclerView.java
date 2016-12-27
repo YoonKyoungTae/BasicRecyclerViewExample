@@ -32,7 +32,7 @@ public class HorizontalRecyclerView extends AppCompatActivity {
 
         // init LayoutManager
         mLayoutManager = new LinearLayoutManager(this);
-        mLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL); // 기본값이 Horizontal
+        mLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL); // 기본값이 VERTICAL
 
         // setLayoutManager
         mHorizontalView.setLayoutManager(mLayoutManager);
