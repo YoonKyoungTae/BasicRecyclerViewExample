@@ -1,5 +1,6 @@
 package com.ydev.basicrecyclerviewexample.vertical;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ydev.basicrecyclerviewexample.R;
 
@@ -51,7 +53,7 @@ public class VerticalRecyclerView extends AppCompatActivity {
  
         // set Data
         mAdapter.setData(data);
-
+        mAdapter.setContext(this);
         // set Adapter
         mVerticalView.setAdapter(mAdapter);
 
@@ -62,7 +64,11 @@ public class VerticalRecyclerView extends AppCompatActivity {
 class VerticalAdapter extends RecyclerView.Adapter<VerticalViewHolder> {
 
     private ArrayList<VerticalData> verticalDatas;
+    private Context context;
 
+    public void setContext(Context context) {
+        this.context = context;
+    }
     public void setData(ArrayList<VerticalData> list){
         verticalDatas = list;
     }
@@ -81,10 +87,19 @@ class VerticalAdapter extends RecyclerView.Adapter<VerticalViewHolder> {
 
     @Override
     public void onBindViewHolder(VerticalViewHolder holder, int position) {
-        VerticalData data = verticalDatas.get(position);
+        final VerticalData data = verticalDatas.get(position);
 
+        // setData
         holder.description.setText(data.getText());
         holder.icon.setImageResource(data.getImg());
+
+        // setOnClick
+        holder.icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, data.getText(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
